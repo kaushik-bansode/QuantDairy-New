@@ -68,7 +68,7 @@ class StandardDeduction(Document):
 				buffalo_item=type.milk_name
 			if(type.milk_type=="Mix"):
 				mix_item=type.milk_name
-			if(type.deduction_name=="Litre Wise"):
+			if(type.deduction_name=="Liter Wise"):
 				if(type.milk_type=="Cow"):
 					cow_litre_wise_amt=type.amount
 				if(type.milk_type=="Buffalo"):
