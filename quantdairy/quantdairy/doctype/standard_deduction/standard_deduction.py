@@ -46,9 +46,9 @@ class StandardDeduction(Document):
 		for child in children:
 			child.check = value 
    
-	#To Create collection Dictionary
 	@frappe.whitelist()
 	def get_document(self):
+		self.deduction.clear()
 		cow_item=""
 		buffalo_item=""
 		mix_item=""
@@ -90,8 +90,7 @@ class StandardDeduction(Document):
 				if(type.milk_type=="Mix"):
 					mix_bill_wise_amt=type.amount
 		doc=frappe.db.get_list('Supplier',filters={"dcs_id":self.warehouse__branch,"disabled":False,'supplier_group':"Farmer -Milk Collection"},
-							fields=["name","supplier_name"]
-							) 
+							fields=["name","supplier_name"]) 
   
 		if(len(self.get("frm_items"))>0):
 			farid_list=[]
@@ -119,8 +118,7 @@ class StandardDeduction(Document):
 									"buffalo_item":buffalo_item,
 									"mix_item":mix_item,
 								}
-							)
-							
+							)		
 		else:
 			for i in self.get("frm_items"): 
 				if(i.check):
