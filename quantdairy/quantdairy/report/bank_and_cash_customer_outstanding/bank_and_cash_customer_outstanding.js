@@ -30,21 +30,32 @@ frappe.query_reports["Bank and Cash Customer Outstanding"] = {
 		{
 			fieldname: "party",
 			label: __("Customer"),
-			fieldtype: "Link",
+			fieldtype: "MultiSelectList",
 			options: "Customer",
-			on_change: () => {
-				var party = frappe.query_report.get_filter_value("party");
-				if (party) {
-					frappe.db.get_value("Customer", party, ["tax_id", "customer_name"], function (value) {
-						frappe.query_report.set_filter_value("tax_id", value["tax_id"]);
-						frappe.query_report.set_filter_value("customer_name", value["customer_name"]);
-					});
-				} else {
-					frappe.query_report.set_filter_value("tax_id", "");
-					frappe.query_report.set_filter_value("customer_name", "");
-				}
+			get_data: function(txt) {
+				return frappe.db.get_link_options("Customer", txt);
 			},
+			reqd: 0,
 		},
+		// {
+		// 	fieldname: "party",
+		// 	label: __("Customer"),
+		// 	fieldtype: "Link",
+		// 	options: "Customer",
+
+		// 	on_change: () => {
+		// 		var party = frappe.query_report.get_filter_value("party");
+		// 		if (party) {
+		// 			frappe.db.get_value("Customer", party, ["tax_id", "customer_name"], function (value) {
+		// 				frappe.query_report.set_filter_value("tax_id", value["tax_id"]);
+		// 				frappe.query_report.set_filter_value("customer_name", value["customer_name"]);
+		// 			});
+		// 		} else {
+		// 			frappe.query_report.set_filter_value("tax_id", "");
+		// 			frappe.query_report.set_filter_value("customer_name", "");
+		// 		}
+		// 	},
+		// },
 		{
 			fieldname: "customer_group",
 			label: __("Customer Group"),

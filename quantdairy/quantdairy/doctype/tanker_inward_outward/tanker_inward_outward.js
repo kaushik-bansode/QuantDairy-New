@@ -34,7 +34,8 @@ frappe.ui.form.on("Tanker Inward Divison", {
         row.basic_amount = parseFloat(row.basic) * parseFloat(row.quantity);
         frm.refresh_field("tanker_division");
         frm.trigger("hide_add_row");
-    }
+    },
+    
 });
 
 
