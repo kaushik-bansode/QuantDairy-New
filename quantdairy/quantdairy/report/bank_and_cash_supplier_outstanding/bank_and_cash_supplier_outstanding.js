@@ -30,20 +30,12 @@ frappe.query_reports["Bank and Cash Supplier Outstanding"] = {
 		{
 			fieldname: "party",
 			label: __("Supplier"),
-			fieldtype: "Link",
+			fieldtype: "MultiSelectList",
 			options: "Supplier",
-			on_change: () => {
-				var party = frappe.query_report.get_filter_value("party");
-				if (party) {
-					frappe.db.get_value("Supplier", party, ["tax_id", "customer_name"], function (value) {
-						frappe.query_report.set_filter_value("tax_id", value["tax_id"]);
-						frappe.query_report.set_filter_value("customer_name", value["customer_name"]);
-					});
-				} else {
-					frappe.query_report.set_filter_value("tax_id", "");
-					frappe.query_report.set_filter_value("customer_name", "");
-				}
+			get_data: function(txt) {
+				return frappe.db.get_link_options("Supplier", txt);
 			},
+			reqd: 0,
 		},
 		{
 			fieldname: "supplier_group",
@@ -54,7 +46,16 @@ frappe.query_reports["Bank and Cash Supplier Outstanding"] = {
 				return frappe.db.get_link_options("Supplier Group", txt);
 			},
 			reqd: 0,
-		}
-		
+		},
+		{
+			fieldname: "mode_of_payment",
+			label: __("Mode of Payment"),
+			fieldtype: "MultiSelectList",
+			options: "Mode of Payment",
+			get_data: function(txt) {
+				return frappe.db.get_link_options("Mode of Payment", txt);
+			},
+			reqd: 0,
+		},
 	]
 };

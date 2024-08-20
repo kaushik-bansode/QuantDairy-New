@@ -29,13 +29,18 @@ frappe.ui.form.on("Tanker Inward Divison", {
         frm.refresh_field("tanker_division");
         frm.trigger("hide_add_row");
     },
+    quantity_kg: function(frm, cdt, cdn) {
+        const row = frappe.get_doc(cdt, cdn);
+        row.quantity = parseFloat(row.quantity_kg) * .9707;
+        frm.refresh_field("tanker_division");
+        frm.trigger("hide_add_row");
+    },
     basic: function(frm, cdt, cdn) {
         const row = frappe.get_doc(cdt, cdn);
         row.basic_amount = parseFloat(row.basic) * parseFloat(row.quantity);
         frm.refresh_field("tanker_division");
         frm.trigger("hide_add_row");
     },
-    
 });
 
 

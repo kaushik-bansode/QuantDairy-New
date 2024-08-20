@@ -72,6 +72,18 @@ frappe.query_reports["Bank and Cash Customer Outstanding"] = {
 			fieldtype: "Link",
 			options: "Territory",
 		},
+		{
+			
+			fieldname: "mode_of_payment",
+			label: __("Mode of Payment"),
+			fieldtype: "MultiSelectList",
+			options: "Mode of Payment",
+			get_data: function(txt) {
+				return frappe.db.get_link_options("Mode of Payment", txt);
+			},
+			reqd: 0,
+		},
+		
 		// {
 		// 	fieldname: "delivery_shift",
 		// 	label: __("Delivery Shift"),

@@ -10,6 +10,7 @@
  "field_order": [
   "tanker_process",
   "party_code",
+  "dcs",
   "column_break_pisey",
   "date",
   "party_name",
@@ -88,8 +89,10 @@
   {
    "fieldname": "shift",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Shift",
-   "options": "\nMorning\nEvening"
+   "options": "\nMorning\nEvening",
+   "reqd": 1
   },
   {
    "fieldname": "driver_name",
@@ -103,8 +106,9 @@
   },
   {
    "fieldname": "gate_pass_no",
-   "fieldtype": "Data",
-   "label": "Gate Pass No."
+   "fieldtype": "Link",
+   "label": "Gate Pass",
+   "options": "Gate Pass"
   },
   {
    "fieldname": "no_of_division",
@@ -185,12 +189,20 @@
    "fieldtype": "Select",
    "label": "Type",
    "options": "\nSales\nPurchase"
+  },
+  {
+   "fieldname": "dcs",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "DCS",
+   "options": "Warehouse",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-31 13:43:33.764347",
+ "modified": "2024-08-13 17:51:04.621137",
  "modified_by": "Administrator",
  "module": "quantdairy",
  "name": "Tanker Inward Outward",
@@ -207,6 +219,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
