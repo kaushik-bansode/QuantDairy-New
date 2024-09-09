@@ -10,7 +10,6 @@
  "field_order": [
   "tanker_process",
   "party_code",
-  "dcs",
   "column_break_pisey",
   "date",
   "party_name",
@@ -36,6 +35,10 @@
   "total_basic_amount",
   "round_off",
   "net_amount",
+  "milk_entry_details_section",
+  "dcs",
+  "column_break_6pujm",
+  "milk_entry_details",
   "amended_from"
  ],
  "fields": [
@@ -197,12 +200,28 @@
    "label": "DCS",
    "options": "Warehouse",
    "reqd": 1
+  },
+  {
+   "fieldname": "milk_entry_details_section",
+   "fieldtype": "Section Break",
+   "label": "Milk Entry Details"
+  },
+  {
+   "fieldname": "milk_entry_details",
+   "fieldtype": "Table",
+   "label": "Milk Entry Details",
+   "options": "Tanker Milk Entry Details",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_6pujm",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-13 17:51:04.621137",
+ "modified": "2024-09-09 13:53:53.340446",
  "modified_by": "Administrator",
  "module": "quantdairy",
  "name": "Tanker Inward Outward",
@@ -210,6 +229,7 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
