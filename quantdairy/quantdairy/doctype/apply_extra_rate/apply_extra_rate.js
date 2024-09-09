@@ -12,6 +12,7 @@ frappe.ui.form.on('Apply Extra Rate', {
 			doc: frm.doc, //current document
 		});
 	},
+	
 	check_all: function (frm) {
 		frm.call({
 			method: 'checkall',//function name defined in python

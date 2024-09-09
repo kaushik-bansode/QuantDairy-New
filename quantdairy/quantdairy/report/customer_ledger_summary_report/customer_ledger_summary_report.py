@@ -289,7 +289,7 @@ class PartyLedgerSummaryReport(object):
 			conditions.append("ifnull(finance_book,'') in (%(finance_book)s, '')")
 
 		if self.filters.get("party"):
-			conditions.append("party=%(party)s")
+			conditions.append("party in %(party)s")
 
 		if self.filters.party_type == "Customer":
 			if self.filters.get("customer_group"):
